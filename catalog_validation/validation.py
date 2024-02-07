@@ -86,7 +86,7 @@ def validate_catalog(catalog_path):
             else:
                 items.extend(get_train_items(complete_path))
 
-    with concurrent.futures.ProcessPoolExecutor(max_workers=5 if len(items) > 10 else 2) as exc:
+    with concurrent.futures.ProcessPoolExecutor(max_workers=15 if len(items) > 15 else 6) as exc:
         for item in items:
             item_futures.append(exc.submit(validate_catalog_item, item[0], item[1]))
 
